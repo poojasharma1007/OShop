@@ -1,0 +1,29 @@
+<form #f="ngForm" (ngSubmit)="save(f)">
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input name="title" ngModel type="text" class="form-control" id="title" placeholder="Enter title">
+    </div>
+    <div>
+        <label for="price">Price</label>
+        <div class="input-group mb-3">
+
+            <div class="input-group-prepend">
+                <span class="input-group-text"> Rs.</span>
+            </div>
+            <input type="text" name="price" ngModel id="price" class="form-control" aria-label="Amount (to the nearest dollar)">
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="category">Category</label>
+        <select class="form-control" name="category" ngModel name="category" id="category">
+            <option value="Select" [selected]="true">Select</option>
+            <option *ngFor="let c of categories$ |async" [value]="c.key">{{c.key}}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="imgurl">Image URL</label>
+        <input type="url" name="imgurl" ngModel class="form-control" id="imgurl" placeholder="Enter Image URL">
+    </div>
+    <input type="submit" class="btn btn-primary" value="Save">
+</form>
